@@ -59,7 +59,7 @@ const ParallaxSection: React.FC<{ imageUrl: string; children: React.ReactNode; c
 };
 
 const LogoImage: React.FC<{ className?: string }> = ({ className }) => {
-    const imageUrl = "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762410970906_THE_NEXT_logo_web_400x400.png?alt=media&token=db1aeaec-37a0-4049-8830-14c59efe6f0f";
+    const imageUrl = "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762410970906_THE_NEXT_logo_web.png?alt=media&token=db1aeaec-37a0-4049-8830-14c59efe6f0f";
     return (
         <img src={imageUrl} alt="THE NEXT Riviera Logo" className={`object-contain ${className || ''}`} />
     );
@@ -82,13 +82,13 @@ const Hero: React.FC = () => {
 
     return (
         <section 
-            className="h-screen min-h-[700px] bg-cover bg-center flex items-center justify-center relative text-white" 
+            className="h-screen min-h-[700px] bg-cover flex items-center justify-center relative text-white" 
             style={{
                 backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762411624248_the_next_riviera.png?alt=media&token=824ae56b-396d-4713-b6aa-14bb1d3acc5d')",
-                backgroundPositionY: `${offsetY * 0.5}px`
+                backgroundPosition: `center calc(50% + ${offsetY * 0.5}px)`
             }}>
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/90"></div>
-            <div className="relative container mx-auto px-6 flex flex-col lg:flex-row items-center justify-center lg:justify-between w-full gap-16">
+            <div className="relative container mx-auto px-6 flex flex-col lg:flex-row items-center justify-center w-full gap-8">
                 <div className="flex justify-center lg:justify-start">
                      <div className="w-96 h-96 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] flex items-center justify-center">
                         <LogoImage className="w-full h-full" />
@@ -178,7 +178,7 @@ const Footer: React.FC = () => {
 
                     {/* Right Column: Contact & Location */}
                     <div className="flex flex-col items-center md:items-start space-y-3">
-                        <h4 className="font-bebas text-xl text-yellow-300 tracking-wider">Contact Us</h4>
+                        <h4 className="font-bebas text-xl text-yellow-300 tracking-wider">MAKE YOUR RESERVATION</h4>
                         <a href="tel:+34692970200" className="flex items-center justify-center md:justify-start gap-3 group text-sm">
                             <PhoneIcon className="w-5 h-5 text-yellow-300"/>
                             <span className="group-hover:text-yellow-300 transition-colors">+34 692 97 02 00</span>
