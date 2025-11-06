@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
         <section 
             className="h-screen min-h-[700px] bg-cover flex items-center justify-center relative text-white" 
             style={{
-                backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762411624248_the_next_riviera.png?alt=media&token=824ae56b-396d-4713-b6aa-14bb1d3acc5d')",
+                backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762455632293_stars-1837306_1280.jpg?alt=media&token=0e8e572c-b69d-4684-88e0-b7179f5d0640')",
                 backgroundPosition: `center calc(50% + ${offsetY * 0.5}px)`
             }}>
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/90"></div>
@@ -122,7 +122,7 @@ const Hero: React.FC = () => {
 };
 
 const About: React.FC = () => (
-    <ParallaxSection imageUrl="https://picsum.photos/1920/1080?random=2">
+    <ParallaxSection imageUrl="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762411624248_the_next_riviera.png?alt=media&token=824ae56b-396d-4713-b6aa-14bb1d3acc5d">
         <AnimatedSection>
             <div className="max-w-3xl mx-auto text-center bg-black/50 backdrop-blur-sm p-8 rounded-lg">
                 <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">Experience the Night</h2>
