@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
         <section 
             className="h-screen min-h-[700px] bg-cover flex items-center justify-center relative text-white" 
             style={{
-                backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762455632293_stars-1837306_1280.jpg?alt=media&token=0e8e572c-b69d-4684-88e0-b7179f5d0640')",
+                backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762456508235_the_next.jpg?alt=media&token=a31ea93d-05f2-4e03-b8a5-41e9bbb1415b')",
                 backgroundPosition: `center calc(50% + ${offsetY * 0.5}px)`
             }}>
             <div className="relative container mx-auto px-6 flex flex-col lg:flex-row items-center justify-center w-full gap-8 z-10">
