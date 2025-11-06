@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THE NEXT Riviera</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #050214;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .font-bebas { font-family: 'Bebas Neue', sans-serif; }
+        .font-vibes { font-family: 'Great Vibes', cursive; }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .neon-text-yellow {
+            text-shadow:
+                0 0 5px rgba(250, 204, 21, 0.7),
+                0 0 10px rgba(250, 204, 21, 0.7),
+                0 0 20px rgba(250, 204, 21, 0.5),
+                0 0 42px rgba(234, 179, 8, 0.5);
+        }
+
+        .neon-circle-glow {
+            box-shadow: 
+                0 0 5px rgba(236, 72, 153, 0.8),
+                0 0 10px rgba(236, 72, 153, 0.8),
+                0 0 20px rgba(168, 85, 247, 0.6),
+                0 0 30px rgba(168, 85, 247, 0.6),
+                inset 0 0 10px rgba(236, 72, 153, 0.5);
+        }
+        
+        .cocktail-glow {
+            filter: drop-shadow(0 0 3px #ec4899) drop-shadow(0 0 8px #ec4899);
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
