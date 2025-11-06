@@ -88,8 +88,7 @@ const Hero: React.FC = () => {
                 backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762455632293_stars-1837306_1280.jpg?alt=media&token=0e8e572c-b69d-4684-88e0-b7179f5d0640')",
                 backgroundPosition: `center calc(50% + ${offsetY * 0.5}px)`
             }}>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/90"></div>
-            <div className="relative container mx-auto px-6 flex flex-col lg:flex-row items-center justify-center w-full gap-8">
+            <div className="relative container mx-auto px-6 flex flex-col lg:flex-row items-center justify-center w-full gap-8 z-10">
                 <div className="flex justify-center lg:justify-start">
                      <div className="w-96 h-96 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] flex items-center justify-center">
                         <LogoImage className="w-full h-full" />
