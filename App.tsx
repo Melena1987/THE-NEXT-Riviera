@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { PhoneIcon } from './components/icons/PhoneIcon';
 import { EmailIcon } from './components/icons/EmailIcon';
@@ -164,20 +165,18 @@ const Footer: React.FC = () => {
         <footer className="bg-black text-white pt-12 pb-8">
             <div className="container mx-auto px-6">
                 <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 text-center md:text-left">
-                    {/* Left Column: Logo, Social */}
-                    <div className="flex flex-col items-center space-y-4">
-                        <div className="w-48"> 
+                    {/* Left Column: Logo */}
+                    <div className="flex flex-col items-center">
+                        <div className="w-56"> 
                             <LogoImage className="w-full h-auto" />
-                        </div>
-                        <div>
-                            <a href="https://www.instagram.com/thenext.riviera" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-pink-500/50 transition-colors duration-300 inline-block">
-                                <InstagramIcon className="w-6 h-6"/>
-                            </a>
                         </div>
                     </div>
 
-                    {/* Right Column: Contact & Location */}
+                    {/* Right Column: Social, Contact & Location */}
                     <div className="flex flex-col items-center md:items-start space-y-3">
+                        <a href="https://www.instagram.com/thenext.riviera" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-colors duration-300">
+                            <InstagramIcon className="w-8 h-8"/>
+                        </a>
                         <h4 className="font-bebas text-xl text-yellow-300 tracking-wider">MAKE YOUR RESERVATION</h4>
                         <a href="tel:+34692970200" className="flex items-center justify-center md:justify-start gap-3 group text-sm">
                             <PhoneIcon className="w-5 h-5 text-yellow-300"/>
