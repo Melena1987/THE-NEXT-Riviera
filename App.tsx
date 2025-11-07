@@ -1,9 +1,12 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { PhoneIcon } from './components/icons/PhoneIcon';
 import { EmailIcon } from './components/icons/EmailIcon';
 import { LocationIcon } from './components/icons/LocationIcon';
 import { InstagramIcon } from './components/icons/InstagramIcon';
+import { MusicNoteIcon } from './components/icons/MusicNoteIcon';
+import { CocktailIcon } from './components/icons/CocktailIcon';
+import { UsersIcon } from './components/icons/UsersIcon';
+import { StarIcon } from './components/icons/StarIcon';
 
 // Custom hook for observing elements
 const useOnScreen = (options: IntersectionObserverInit) => {
@@ -120,95 +123,175 @@ const Hero: React.FC = () => {
     );
 };
 
-const About: React.FC = () => (
-    <ParallaxSection imageUrl="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762411624248_the_next_riviera.png?alt=media&token=824ae56b-396d-4713-b6aa-14bb1d3acc5d">
-        <AnimatedSection>
-            <div className="max-w-3xl mx-auto text-center bg-black/50 backdrop-blur-sm p-8 rounded-lg">
-                <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">Experience the Night</h2>
-                <p className="text-gray-300 text-lg leading-relaxed">
-                    THE NEXT Riviera is not just a venue; it's an experience. Nestled in the heart of Mijas, we bring you the ultimate nightlife destination with world-class DJs, electrifying light shows, and an atmosphere that's second to none. Get ready to dance until dawn.
-                </p>
-            </div>
-        </AnimatedSection>
-    </ParallaxSection>
-);
-
-const Gallery: React.FC = () => {
-    const images = Array.from({ length: 8 }, (_, i) => `https://picsum.photos/600/600?random=${i + 10}`);
+const About: React.FC = () => {
+    const featuresData = [
+        {
+            icon: MusicNoteIcon,
+            title: 'Live Music',
+            description: 'The best DJs and live music every weekend.',
+            iconColorClass: 'text-purple-400',
+            glowClass: 'music-glow',
+        },
+        {
+            icon: CocktailIcon,
+            title: 'Premium Cocktails',
+            description: 'An extensive menu of premium cocktails and drinks prepared by experts.',
+            iconColorClass: 'text-pink-400',
+            glowClass: 'cocktail-glow',
+        },
+        {
+            icon: UsersIcon,
+            title: 'Unique Atmosphere',
+            description: 'A space designed to enjoy with friends in an exclusive atmosphere.',
+            iconColorClass: 'text-blue-400',
+            glowClass: 'users-glow',
+        },
+        {
+            icon: StarIcon,
+            title: 'VIP Experience',
+            description: 'Table service and VIP areas for an unforgettable experience.',
+            iconColorClass: 'text-yellow-300',
+            glowClass: 'star-glow',
+        },
+    ];
 
     return (
-        <section className="py-20 bg-[#050214]">
-            <div className="container mx-auto px-6 text-center">
-                 <AnimatedSection>
-                    <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-10 tracking-wider">Our Vibe</h2>
-                </AnimatedSection>
-                <AnimatedSection>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {images.map((src, index) => (
-                            <div key={index} className="overflow-hidden rounded-lg shadow-lg group">
-                                <img src={src} alt={`Gallery image ${index + 1}`} className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" />
+        <ParallaxSection imageUrl="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762411624248_the_next_riviera.png?alt=media&token=824ae56b-396d-4713-b6aa-14bb1d3acc5d">
+            <AnimatedSection>
+                <div className="max-w-3xl mx-auto text-center">
+                    <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">Experience the Night</h2>
+                    <p className="text-gray-300 text-lg leading-relaxed mb-16">
+                        THE NEXT Riviera is not just a venue; it's an experience. Nestled in the heart of Mijas, we bring you the ultimate nightlife destination with world-class DJs, electrifying light shows, and an atmosphere that's second to none. Get ready to dance until dawn.
+                    </p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    {featuresData.map((feature, index) => (
+                        <div key={index} className="bg-white/5 backdrop-blur-sm p-6 rounded-lg text-center border border-white/10 feature-card transform transition-transform duration-300 hover:scale-105">
+                             <div className={`relative w-20 h-20 mx-auto mb-4 flex items-center justify-center rounded-full bg-black/20 ${feature.glowClass}`}>
+                                <feature.icon className={`w-10 h-10 ${feature.iconColorClass}`} />
                             </div>
-                        ))}
+                            <h3 className="text-xl font-bold mb-2 text-white font-bebas tracking-wider">{feature.title}</h3>
+                            <p className="text-gray-400 text-sm">{feature.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </AnimatedSection>
+        </ParallaxSection>
+    );
+};
+
+const Gallery: React.FC = () => {
+    const galleryImages = [
+        { src: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'Live concert at THE NEXT Riviera' },
+        { src: 'https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'Crowd dancing and enjoying the music' },
+        { src: 'https://images.pexels.com/photos/3358707/pexels-photo-3358707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'Bartender crafting a premium cocktail' },
+        { src: 'https://images.pexels.com/photos/1387174/pexels-photo-1387174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'DJ performing a set on the main stage' },
+        { src: 'https://images.pexels.com/photos/2747446/pexels-photo-2747446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'Guests socializing in the VIP area' },
+        { src: 'https://images.pexels.com/photos/625644/pexels-photo-625644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'Stunning light show on the dance floor' },
+    ];
+    
+    const parallaxBgUrl = 'https://images.pexels.com/photos/2114365/pexels-photo-2114365.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+
+    return (
+        <ParallaxSection imageUrl={parallaxBgUrl}>
+            <AnimatedSection>
+                <div className="max-w-4xl mx-auto text-center mb-16">
+                    <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">Our Vibe</h2>
+                    <p className="text-gray-300 text-lg leading-relaxed">
+                        Capture the energy, the moments, and the memories. This is what a night at THE NEXT Riviera feels like.
+                    </p>
+                </div>
+                
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
+                    {galleryImages.map((image, index) => (
+                         <div key={index} className="relative rounded-lg overflow-hidden group border-2 border-white/10 transform transition-transform duration-300 hover:scale-105 hover:border-pink-500">
+                            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                            <img 
+                                src={image.src} 
+                                alt={image.alt} 
+                                className="w-full h-48 md:h-64 object-cover"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </AnimatedSection>
+        </ParallaxSection>
+    );
+};
+
+const Contact: React.FC = () => {
+    return (
+        <section id="contact" className="py-20 bg-black text-white">
+            <div className="container mx-auto px-6">
+                <AnimatedSection>
+                    <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-12 text-center tracking-wider">Contact Us</h2>
+                    <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div className="space-y-6">
+                            <h3 className="font-bebas text-3xl text-white tracking-wider">Get in Touch</h3>
+                            <p className="text-gray-400">
+                                Have questions or want to make a reservation? Reach out to us. We're here to make your night unforgettable.
+                            </p>
+                            <div className="space-y-4">
+                                <div className="flex items-center space-x-4">
+                                    <PhoneIcon className="w-6 h-6 text-pink-400" />
+                                    <a href="tel:+34692970200" className="text-gray-300 hover:text-white transition-colors">+34 692 97 02 00</a>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <EmailIcon className="w-6 h-6 text-pink-400" />
+                                    <a href="mailto:info@the-next.es" className="text-gray-300 hover:text-white transition-colors">info@the-next.es</a>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <LocationIcon className="w-6 h-6 text-pink-400" />
+                                    <a href="https://maps.app.goo.gl/JXnNYcPMBTB5coJBA" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                                        C. Libra, 11, 29649 Mijas, Málaga
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                         <div>
+                            <h3 className="font-bebas text-3xl text-white mb-4 tracking-wider">Follow Us</h3>
+                            <p className="text-gray-400 mb-6">Stay updated with our latest events and behind-the-scenes moments on our social media.</p>
+                            <a href="https://www.instagram.com/thenext.riviera" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                                <InstagramIcon className="w-6 h-6" />
+                                <span>@thenext.riviera</span>
+                            </a>
+                        </div>
                     </div>
-                 </AnimatedSection>
+                </AnimatedSection>
             </div>
         </section>
     );
 };
 
 const Footer: React.FC = () => {
-    const address = "C. Libra, 11, 29649 Mijas, Málaga";
-    const mapsUrl = "https://maps.app.goo.gl/JXnNYcPMBTB5coJBA";
-
     return (
-        <footer className="bg-black text-white pt-12 pb-8">
+        <footer className="bg-black border-t border-white/10 py-8 text-center text-gray-500">
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 text-center md:text-left">
-                    {/* Left Column: Logo */}
-                    <div className="flex flex-col items-center">
-                        <div className="w-56"> 
-                            <LogoImage className="w-full h-auto" />
-                        </div>
-                    </div>
-
-                    {/* Right Column: Social, Contact & Location */}
-                    <div className="flex flex-col items-center md:items-start space-y-3">
-                        <a href="https://www.instagram.com/thenext.riviera" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-colors duration-300">
-                            <InstagramIcon className="w-8 h-8"/>
-                        </a>
-                        <h4 className="font-bebas text-xl text-yellow-300 tracking-wider">MAKE YOUR RESERVATION</h4>
-                        <a href="tel:+34692970200" className="flex items-center justify-center md:justify-start gap-3 group text-sm">
-                            <PhoneIcon className="w-5 h-5 text-yellow-300"/>
-                            <span className="group-hover:text-yellow-300 transition-colors">+34 692 97 02 00</span>
-                        </a>
-                        <a href="mailto:info@the-next.es" className="flex items-center justify-center md:justify-start gap-3 group text-sm">
-                            <EmailIcon className="w-5 h-5 text-yellow-300"/>
-                            <span className="group-hover:text-yellow-300 transition-colors">info@the-next.es</span>
-                        </a>
-                         <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start gap-3 group text-sm">
-                            <LocationIcon className="w-5 h-5 text-yellow-300 flex-shrink-0"/>
-                            <span className="group-hover:text-yellow-300 transition-colors">{address}</span>
-                        </a>
-                    </div>
+                 <div className="flex justify-center mb-4">
+                    <LogoImage className="h-20" />
                 </div>
-                <div className="mt-10 text-center text-xs text-gray-500">
-                    <p>&copy; 2025 THE NEXT Riviera. All Rights Reserved.</p>
-                </div>
+                <p>&copy; {new Date().getFullYear()} THE NEXT Riviera. All Rights Reserved.</p>
+                <p className="text-sm">Designed for an epic night.</p>
             </div>
         </footer>
     );
 };
 
-
-function App() {
+// Fix: The original App.tsx was incomplete and was missing a default export.
+// The App component renders all the page sections and is exported as default, resolving the error in index.tsx.
+const App: React.FC = () => {
     return (
-        <main>
-            <Hero />
-            <About />
-            <Gallery />
+        <div className="bg-black">
+            <main>
+                <Hero />
+                <About />
+                <Gallery />
+                <Contact />
+            </main>
             <Footer />
-        </main>
+        </div>
     );
-}
+};
 
 export default App;
