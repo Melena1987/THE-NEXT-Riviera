@@ -87,6 +87,9 @@ const Hero: React.FC = () => {
 
     return (
         <section 
+            // ----- CÓDIGO MODIFICADO -----
+            // He revertido los cambios de 'items-start' y 'pt-24'.
+            // Vuelve a estar centrado verticalmente con 'items-center'
             className="h-screen min-h-[700px] bg-cover flex items-center justify-center relative text-white" 
             style={{
                 backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762456508235_the_next.jpg?alt=media&token=a31ea93d-05f2-4e03-b8a5-41e9bbb1415b')",
@@ -94,12 +97,14 @@ const Hero: React.FC = () => {
             }}>
             <div className="relative container mx-auto px-6 flex flex-col lg:flex-row items-center justify-center w-full gap-8 z-10">
                 <div className="flex justify-center lg:justify-start">
-                     <div className="w-96 h-96 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] flex items-center justify-center">
+                    {/* ----- CÓDIGO MODIFICADO ----- */}
+                    {/* Se ha reducido el tamaño del logo en móvil (w-80 h-80) y tablet (md:w-96 md:h-96) */}
+                     <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[600px] lg:h-[600px] flex items-center justify-center">
                         <LogoImage className="w-full h-full" />
                     </div>
+                    {/* ----- FIN CÓDIGO MODIFICADO ----- */}
                 </div>
                
-                {/* ----- CÓDIGO MODIFICADO ----- */}
                 {/* Contenedor para la columna derecha (Eventos + Botón) */}
                 <div className="flex flex-col items-center w-full max-w-sm">
                     
@@ -135,7 +140,6 @@ const Hero: React.FC = () => {
                         </a>
                     </div>
                 </div>
-                {/* ----- FIN CÓDIGO MODIFICADO ----- */}
 
             </div>
              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
