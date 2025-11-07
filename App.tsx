@@ -3,11 +3,14 @@ import { PhoneIcon } from './components/icons/PhoneIcon';
 import { EmailIcon } from './components/icons/EmailIcon';
 import { LocationIcon } from './components/icons/LocationIcon';
 import { InstagramIcon } from './components/icons/InstagramIcon';
+import { WhatsAppIcon } from './components/icons/WhatsAppIcon';
 import { MusicNoteIcon } from './components/icons/MusicNoteIcon';
 import { CocktailIcon } from './components/icons/CocktailIcon';
 import { UsersIcon } from './components/icons/UsersIcon';
 import { StarIcon } from './components/icons/StarIcon';
 import { ClockIcon } from './components/icons/ClockIcon';
+import { Legal } from './components/Legal';
+import { CookieBanner } from './components/CookieBanner';
 
 // Custom hook for observing elements
 const useOnScreen = (options: IntersectionObserverInit) => {
@@ -40,10 +43,16 @@ const useOnScreen = (options: IntersectionObserverInit) => {
 };
 
 
-const AnimatedSection: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => {
+const AnimateOnScroll: React.FC<{ children: React.ReactNode; className?: string; animation: string; delay?: number }> = ({ children, className, animation, delay }) => {
     const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
+    const style: React.CSSProperties = delay ? { '--animation-delay': `${delay}ms` } as React.CSSProperties : {};
+
     return (
-        <div ref={ref as React.RefObject<HTMLDivElement>} className={`fade-in-section ${isVisible ? 'is-visible' : ''} ${className || ''}`}>
+        <div
+            ref={ref as React.RefObject<HTMLDivElement>}
+            className={`animate-on-scroll ${animation} ${isVisible ? 'is-visible' : ''} ${className || ''}`}
+            style={style}
+        >
             {children}
         </div>
     );
@@ -87,47 +96,48 @@ const Hero: React.FC = () => {
 
     return (
         <section 
-            // ----- CÓDIGO MODIFICADO -----
-            // He revertido los cambios de 'items-start' y 'pt-24'.
-            // Vuelve a estar centrado verticalmente con 'items-center'
-            className="h-screen min-h-[700px] bg-cover flex items-center justify-center relative text-white" 
+            className="h-screen min-h-[700px] bg-cover flex items-start lg:items-center justify-center relative text-white pt-12 lg:pt-0" 
             style={{
                 backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762456508235_the_next.jpg?alt=media&token=a31ea93d-05f2-4e03-b8a5-41e9bbb1415b')",
                 backgroundPosition: `center calc(50% + ${offsetY * 0.5}px)`
             }}>
-            <div className="relative container mx-auto px-6 flex flex-col lg:flex-row items-center justify-center w-full gap-8 z-10">
+            <div className="relative container mx-auto px-6 flex flex-col lg:flex-row items-center justify-center w-full gap-2 lg:gap-8 z-10">
                 <div className="flex justify-center lg:justify-start">
-                    {/* ----- CÓDIGO MODIFICADO ----- */}
-                    {/* Se ha reducido el tamaño del logo en móvil (w-80 h-80) y tablet (md:w-96 md:h-96) */}
-                     <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[600px] lg:h-[600px] flex items-center justify-center">
+                     <div className="w-80 h-80 lg:w-[600px] lg:h-[600px] flex items-center justify-center hero-logo-animate">
                         <LogoImage className="w-full h-full" />
                     </div>
-                    {/* ----- FIN CÓDIGO MODIFICADO ----- */}
                 </div>
                
-                {/* Contenedor para la columna derecha (Eventos + Botón) */}
-                <div className="flex flex-col items-center w-full max-w-sm">
+                <div className="flex flex-col items-center w-full max-w-sm hero-content-animate">
                     
-                    {/* Caja de Eventos */}
                     <div className="w-full bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20">
                         <h3 className="font-bebas text-3xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">Upcoming Events</h3>
                         <div className="space-y-4">
                             {events.map((event, index) => (
-                                <div key={index} className="flex items-center border-b border-white/10 pb-2 last:border-b-0">
-                                    <div className="text-center border-r border-pink-400/50 pr-4 mr-4">
-                                        <p className="font-bold text-lg leading-tight">{event.date.split(' ')[0]}</p>
-                                        <p className="text-sm text-gray-300 leading-tight">{event.date.split(' ')[1]}</p>
+                                <div key={index} className="flex items-center justify-between border-b border-white/10 pb-2 last:border-b-0">
+                                    <div className="flex items-center">
+                                        <div className="text-center border-r border-pink-400/50 pr-4 mr-4">
+                                            <p className="font-bold text-lg leading-tight">{event.date.split(' ')[0]}</p>
+                                            <p className="text-sm text-gray-300 leading-tight">{event.date.split(' ')[1]}</p>
+                                        </div>
+                                        <div>
+                                            <p className="font-bold text-white text-lg">{event.name}</p>
+                                            <p className="text-sm text-gray-300">{event.dj}</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="font-bold text-white text-lg">{event.name}</p>
-                                        <p className="text-sm text-gray-300">{event.dj}</p>
-                                    </div>
+                                    <a 
+                                        href="https://wa.link/thaxxn" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="text-xs font-bold bg-white/10 text-white py-1 px-3 rounded-full transition-colors hover:bg-pink-500 whitespace-nowrap"
+                                    >
+                                        Join
+                                    </a>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* Botón CTA (Ahora fuera de la caja de eventos) */}
                     <div className="mt-6 text-center">
                         <a 
                             href="https://maps.app.goo.gl/JXnNYcPMBTB5coJBA" 
@@ -136,8 +146,12 @@ const Hero: React.FC = () => {
                             className="inline-flex items-center space-x-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105"
                         >
                             <LocationIcon className="w-6 h-6" />
-                            <span>Cómo Llegar</span>
+                            <span>Find Us</span>
                         </a>
+                         <div className="mt-4 flex items-center justify-center space-x-2 text-gray-300">
+                            <ClockIcon className="w-5 h-5 text-purple-400" />
+                            <p className="text-sm font-light tracking-wide">Thursday to Sunday · Until 3am</p>
+                        </div>
                     </div>
                 </div>
 
@@ -180,26 +194,30 @@ const About: React.FC = () => {
 
     return (
         <ParallaxSection imageUrl="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762411624248_the_next_riviera.png?alt=media&token=824ae56b-396d-4713-b6aa-14bb1d3acc5d">
-            <AnimatedSection>
-                <div className="max-w-3xl mx-auto text-center">
+            <div className="max-w-3xl mx-auto text-center">
+                <AnimateOnScroll animation="fade-down">
                     <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">Experience the Night</h2>
+                </AnimateOnScroll>
+                <AnimateOnScroll animation="fade-up" delay={200}>
                     <p className="text-gray-300 text-lg leading-relaxed mb-16">
                         THE NEXT Riviera is not just a venue; it's an experience. Nestled in the heart of Mijas, we bring you the ultimate nightlife destination with world-class DJs, electrifying light shows, and an atmosphere that's second to none. Get ready to dance until dawn.
                     </p>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                    {featuresData.map((feature, index) => (
-                        <div key={index} className="bg-white/5 backdrop-blur-sm p-6 rounded-lg text-center border border-white/10 feature-card transform transition-transform duration-300 hover:scale-105">
+                </AnimateOnScroll>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                {featuresData.map((feature, index) => (
+                    <AnimateOnScroll key={index} animation="zoom-in" delay={index * 150}>
+                        <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg text-center border border-white/10 feature-card transform transition-transform duration-300 hover:scale-105 h-full">
                              <div className={`relative w-20 h-20 mx-auto mb-4 flex items-center justify-center rounded-full bg-black/20 ${feature.glowClass}`}>
                                 <feature.icon className={`w-10 h-10 ${feature.iconColorClass}`} />
                             </div>
                             <h3 className="text-xl font-bold mb-2 text-white font-bebas tracking-wider">{feature.title}</h3>
                             <p className="text-gray-400 text-sm">{feature.description}</p>
                         </div>
-                    ))}
-                </div>
-            </AnimatedSection>
+                    </AnimateOnScroll>
+                ))}
+            </div>
         </ParallaxSection>
     );
 };
@@ -215,14 +233,16 @@ const Events: React.FC = () => {
 
     return (
         <ParallaxSection imageUrl={parallaxBgUrl}>
-            <AnimatedSection>
-                <div className="max-w-4xl mx-auto text-center mb-16">
+            <div className="max-w-4xl mx-auto text-center mb-16">
+                 <AnimateOnScroll animation="fade-down">
                     <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">This Week's Lineup</h2>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    {events.map((event, index) => (
-                         <div key={index} className="bg-black/50 backdrop-blur-md p-8 rounded-lg text-center border-2 border-purple-500/50 transform transition-all duration-300 hover:scale-105 hover:border-pink-500 neon-shadow-purple flex flex-col justify-between">
+                </AnimateOnScroll>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {events.map((event, index) => (
+                    <AnimateOnScroll key={index} animation="fade-up" delay={index * 150}>
+                        <div className="bg-black/50 backdrop-blur-md p-8 rounded-lg text-center border-2 border-purple-500/50 transform transition-all duration-300 hover:scale-105 hover:border-pink-500 neon-shadow-purple flex flex-col justify-between h-full">
                             <div>
                                 <p className="font-bebas text-5xl text-pink-400 tracking-widest">{event.date.split(' ')[0]}</p>
                                 <p className="text-xl text-gray-300 mb-4">{event.date.split(' ')[1]}</p>
@@ -230,10 +250,20 @@ const Events: React.FC = () => {
                                 <h3 className="font-bebas text-4xl text-white mb-2 tracking-wide">{event.name}</h3>
                                 <p className="text-gray-400 text-lg">with {event.dj}</p>
                             </div>
+                            <div className="mt-6">
+                                <a 
+                                    href="https://wa.link/thaxxn" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-2 px-8 rounded-lg transition-transform transform hover:scale-105"
+                                >
+                                    Join Event
+                                </a>
+                            </div>
                         </div>
-                    ))}
-                </div>
-            </AnimatedSection>
+                    </AnimateOnScroll>
+                ))}
+            </div>
         </ParallaxSection>
     );
 };
@@ -252,17 +282,21 @@ const Gallery: React.FC = () => {
 
     return (
         <ParallaxSection imageUrl={parallaxBgUrl}>
-            <AnimatedSection>
-                <div className="max-w-4xl mx-auto text-center mb-16">
+            <div className="max-w-4xl mx-auto text-center mb-16">
+                <AnimateOnScroll animation="fade-down">
                     <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">Our Vibe</h2>
+                </AnimateOnScroll>
+                <AnimateOnScroll animation="fade-up" delay={200}>
                     <p className="text-gray-300 text-lg leading-relaxed">
                         Capture the energy, the moments, and the memories. This is what a night at THE NEXT Riviera feels like.
                     </p>
-                </div>
-                
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
-                    {galleryImages.map((image, index) => (
-                         <div key={index} className="relative rounded-lg overflow-hidden group border-2 border-white/10 transform transition-transform duration-300 hover:scale-105 hover:border-pink-500">
+                </AnimateOnScroll>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
+                {galleryImages.map((image, index) => (
+                    <AnimateOnScroll key={index} animation="zoom-in" delay={index * 100}>
+                        <div className="relative rounded-lg overflow-hidden group border-2 border-white/10 transform transition-transform duration-300 hover:scale-105 hover:border-pink-500">
                             <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                             <img 
                                 src={image.src} 
@@ -270,9 +304,9 @@ const Gallery: React.FC = () => {
                                 className="w-full h-48 md:h-64 object-cover"
                             />
                         </div>
-                    ))}
-                </div>
-            </AnimatedSection>
+                    </AnimateOnScroll>
+                ))}
+            </div>
         </ParallaxSection>
     );
 };
@@ -281,9 +315,11 @@ const Contact: React.FC = () => {
     return (
         <section id="contact" className="py-20 bg-black text-white">
             <div className="container mx-auto px-6">
-                <AnimatedSection>
+                <AnimateOnScroll animation="fade-down">
                     <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-12 text-center tracking-wider">Contact Us</h2>
-                    <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                </AnimateOnScroll>
+                <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <AnimateOnScroll animation="fade-right">
                         <div className="space-y-6">
                             <h3 className="font-bebas text-3xl text-white tracking-wider">Get in Touch</h3>
                             <p className="text-gray-400">
@@ -310,22 +346,30 @@ const Contact: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                         <div>
-                            <h3 className="font-bebas text-3xl text-white mb-4 tracking-wider">Follow Us</h3>
-                            <p className="text-gray-400 mb-6">Stay updated with our latest events and behind-the-scenes moments on our social media.</p>
-                            <a href="https://www.instagram.com/thenext.riviera" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
-                                <InstagramIcon className="w-6 h-6" />
-                                <span>@thenext.riviera</span>
-                            </a>
+                    </AnimateOnScroll>
+                    <AnimateOnScroll animation="fade-left" delay={200}>
+                        <div>
+                            <h3 className="font-bebas text-3xl text-white mb-4 tracking-wider">Follow & Contact</h3>
+                            <p className="text-gray-400 mb-6">Stay updated on Instagram or send us a message directly on WhatsApp for reservations.</p>
+                            <div className="flex flex-col sm:flex-row items-center gap-4">
+                                <a href="https://www.instagram.com/thenext.riviera" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto justify-center inline-flex items-center space-x-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                                    <InstagramIcon className="w-6 h-6" />
+                                    <span>@thenext.riviera</span>
+                                </a>
+                                <a href="https://wa.link/thaxxn" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto justify-center inline-flex items-center space-x-3 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                                    <WhatsAppIcon className="w-6 h-6" />
+                                    <span>Chat on WhatsApp</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </AnimatedSection>
+                    </AnimateOnScroll>
+                </div>
             </div>
         </section>
     );
 };
 
-const Footer: React.FC = () => {
+const Footer: React.FC<{ onLegalClick: () => void }> = ({ onLegalClick }) => {
     return (
         <footer className="bg-black border-t border-white/10 py-8 text-center text-gray-500">
             <div className="container mx-auto px-6">
@@ -334,14 +378,28 @@ const Footer: React.FC = () => {
                 </div>
                 <p>© {new Date().getFullYear()} THE NEXT Riviera. All Rights Reserved.</p>
                 <p className="text-sm">Designed for an epic night.</p>
+                <div className="mt-4">
+                    <button onClick={onLegalClick} className="text-sm text-gray-400 hover:text-white transition-colors">
+                        Terms and Privacy Policy
+                    </button>
+                </div>
             </div>
         </footer>
     );
 };
 
-// Fix: The original App.tsx was incomplete and was missing a default export.
-// The App component renders all the page sections and is exported as default, resolving the error in index.tsx.
+
 const App: React.FC = () => {
+    const [showLegal, setShowLegal] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [showLegal]);
+
+    if (showLegal) {
+        return <Legal onBack={() => setShowLegal(false)} />;
+    }
+
     return (
         <div className="bg-black">
             <main>
@@ -351,7 +409,8 @@ const App: React.FC = () => {
                 <Gallery />
                 <Contact />
             </main>
-            <Footer />
+            <Footer onLegalClick={() => setShowLegal(true)} />
+            <CookieBanner onLegalClick={() => setShowLegal(true)} />
         </div>
     );
 };
