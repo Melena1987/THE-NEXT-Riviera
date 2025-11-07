@@ -7,6 +7,7 @@ import { MusicNoteIcon } from './components/icons/MusicNoteIcon';
 import { CocktailIcon } from './components/icons/CocktailIcon';
 import { UsersIcon } from './components/icons/UsersIcon';
 import { StarIcon } from './components/icons/StarIcon';
+import { ClockIcon } from './components/icons/ClockIcon';
 
 // Custom hook for observing elements
 const useOnScreen = (options: IntersectionObserverInit) => {
@@ -181,6 +182,40 @@ const About: React.FC = () => {
     );
 };
 
+const Events: React.FC = () => {
+    const events = [
+        { date: 'FRI 24/08', name: 'NEON NIGHTS', dj: 'DJ Alex' },
+        { date: 'SAT 25/08', name: 'IBIZA VIBES', dj: 'Special Guest' },
+        { date: 'SUN 26/08', name: 'LATIN SUNDAYS', dj: 'DJ Rico' },
+    ];
+    
+    const parallaxBgUrl = 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+
+    return (
+        <ParallaxSection imageUrl={parallaxBgUrl}>
+            <AnimatedSection>
+                <div className="max-w-4xl mx-auto text-center mb-16">
+                    <h2 className="font-bebas text-5xl md:text-6xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">This Week's Lineup</h2>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    {events.map((event, index) => (
+                         <div key={index} className="bg-black/50 backdrop-blur-md p-8 rounded-lg text-center border-2 border-purple-500/50 transform transition-all duration-300 hover:scale-105 hover:border-pink-500 neon-shadow-purple flex flex-col justify-between">
+                            <div>
+                                <p className="font-bebas text-5xl text-pink-400 tracking-widest">{event.date.split(' ')[0]}</p>
+                                <p className="text-xl text-gray-300 mb-4">{event.date.split(' ')[1]}</p>
+                           
+                                <h3 className="font-bebas text-4xl text-white mb-2 tracking-wide">{event.name}</h3>
+                                <p className="text-gray-400 text-lg">with {event.dj}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </AnimatedSection>
+        </ParallaxSection>
+    );
+};
+
 const Gallery: React.FC = () => {
     const galleryImages = [
         { src: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt: 'Live concert at THE NEXT Riviera' },
@@ -247,6 +282,10 @@ const Contact: React.FC = () => {
                                         C. Libra, 11, 29649 Mijas, Málaga
                                     </a>
                                 </div>
+                                <div className="flex items-center space-x-4">
+                                    <ClockIcon className="w-6 h-6 text-pink-400" />
+                                    <span className="text-gray-300">Thursday to Sunday from 5:00 PM</span>
+                                </div>
                             </div>
                         </div>
                          <div>
@@ -286,6 +325,7 @@ const App: React.FC = () => {
             <main>
                 <Hero />
                 <About />
+                <Events />
                 <Gallery />
                 <Contact />
             </main>
