@@ -99,23 +99,44 @@ const Hero: React.FC = () => {
                     </div>
                 </div>
                
-                <div className="w-full max-w-sm bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20">
-                    <h3 className="font-bebas text-3xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">Upcoming Events</h3>
-                    <div className="space-y-4">
-                        {events.map((event, index) => (
-                            <div key={index} className="flex items-center border-b border-white/10 pb-2 last:border-b-0">
-                                <div className="text-center border-r border-pink-400/50 pr-4 mr-4">
-                                    <p className="font-bold text-lg leading-tight">{event.date.split(' ')[0]}</p>
-                                    <p className="text-sm text-gray-300 leading-tight">{event.date.split(' ')[1]}</p>
+                {/* ----- CÓDIGO MODIFICADO ----- */}
+                {/* Contenedor para la columna derecha (Eventos + Botón) */}
+                <div className="flex flex-col items-center w-full max-w-sm">
+                    
+                    {/* Caja de Eventos */}
+                    <div className="w-full bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20">
+                        <h3 className="font-bebas text-3xl text-yellow-300 neon-text-yellow mb-4 tracking-wider">Upcoming Events</h3>
+                        <div className="space-y-4">
+                            {events.map((event, index) => (
+                                <div key={index} className="flex items-center border-b border-white/10 pb-2 last:border-b-0">
+                                    <div className="text-center border-r border-pink-400/50 pr-4 mr-4">
+                                        <p className="font-bold text-lg leading-tight">{event.date.split(' ')[0]}</p>
+                                        <p className="text-sm text-gray-300 leading-tight">{event.date.split(' ')[1]}</p>
+                                    </div>
+                                    <div>
+                                        <p className="font-bold text-white text-lg">{event.name}</p>
+                                        <p className="text-sm text-gray-300">{event.dj}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className="font-bold text-white text-lg">{event.name}</p>
-                                    <p className="text-sm text-gray-300">{event.dj}</p>
-                                </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Botón CTA (Ahora fuera de la caja de eventos) */}
+                    <div className="mt-6 text-center">
+                        <a 
+                            href="https://maps.app.goo.gl/JXnNYcPMBTB5coJBA" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="inline-flex items-center space-x-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105"
+                        >
+                            <LocationIcon className="w-6 h-6" />
+                            <span>Cómo Llegar</span>
+                        </a>
                     </div>
                 </div>
+                {/* ----- FIN CÓDIGO MODIFICADO ----- */}
+
             </div>
              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
                 <svg className="w-8 h-8 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -310,7 +331,7 @@ const Footer: React.FC = () => {
                  <div className="flex justify-center mb-4">
                     <LogoImage className="h-20" />
                 </div>
-                <p>&copy; {new Date().getFullYear()} THE NEXT Riviera. All Rights Reserved.</p>
+                <p>© {new Date().getFullYear()} THE NEXT Riviera. All Rights Reserved.</p>
                 <p className="text-sm">Designed for an epic night.</p>
             </div>
         </footer>
