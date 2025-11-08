@@ -96,14 +96,14 @@ const Hero: React.FC = () => {
 
     return (
         <section 
-            className="h-screen min-h-[700px] bg-cover flex items-start lg:items-center justify-center relative text-white pt-12 lg:pt-0" 
+            className="h-screen min-h-[700px] bg-cover flex items-start lg:items-center justify-center relative text-white pt-8 lg:pt-0" 
             style={{
                 backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762456508235_the_next.jpg?alt=media&token=a31ea93d-05f2-4e03-b8a5-41e9bbb1415b')",
                 backgroundPosition: `center calc(50% + ${offsetY * 0.5}px)`
             }}>
             <div className="relative container mx-auto px-6 flex flex-col lg:flex-row items-center justify-center w-full gap-2 lg:gap-8 z-10">
                 <div className="flex justify-center lg:justify-start">
-                     <div className="w-80 h-80 lg:w-[600px] lg:h-[600px] flex items-center justify-center hero-logo-animate">
+                     <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-[600px] lg:h-[600px] flex items-center justify-center hero-logo-animate">
                         <LogoImage className="w-full h-full" />
                     </div>
                 </div>
