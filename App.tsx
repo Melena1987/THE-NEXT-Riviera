@@ -4,6 +4,7 @@ import { EmailIcon } from './components/icons/EmailIcon';
 import { LocationIcon } from './components/icons/LocationIcon';
 import { InstagramIcon } from './components/icons/InstagramIcon';
 import { WhatsAppIcon } from './components/icons/WhatsAppIcon';
+import { FacebookIcon } from './components/icons/FacebookIcon';
 import { MusicNoteIcon } from './components/icons/MusicNoteIcon';
 import { CocktailIcon } from './components/icons/CocktailIcon';
 import { UsersIcon } from './components/icons/UsersIcon';
@@ -350,11 +351,15 @@ const Contact: React.FC = () => {
                     <AnimateOnScroll animation="fade-left" delay={200}>
                         <div>
                             <h3 className="font-bebas text-3xl text-white mb-4 tracking-wider">Follow & Contact</h3>
-                            <p className="text-gray-400 mb-6">Stay updated on Instagram or send us a message directly on WhatsApp for reservations.</p>
-                            <div className="flex flex-col sm:flex-row items-center gap-4">
+                            <p className="text-gray-400 mb-6">Stay updated on our social media or send us a message directly on WhatsApp for reservations.</p>
+                            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4">
                                 <a href="https://www.instagram.com/thenext.riviera" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto justify-center inline-flex items-center space-x-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
                                     <InstagramIcon className="w-6 h-6" />
                                     <span>@thenext.riviera</span>
+                                </a>
+                                <a href="https://www.facebook.com/people/The-NEXT-Riviera/61583273083847/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto justify-center inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                                    <FacebookIcon className="w-6 h-6" />
+                                    <span>Facebook</span>
                                 </a>
                                 <a href="https://wa.link/thaxxn" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto justify-center inline-flex items-center space-x-3 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
                                     <WhatsAppIcon className="w-6 h-6" />
