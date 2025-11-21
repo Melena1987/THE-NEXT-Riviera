@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LocationIcon } from './icons/LocationIcon';
 import { ClockIcon } from './icons/ClockIcon';
+import { CocktailIcon } from './icons/CocktailIcon';
 import { LogoImage } from './LogoImage';
 
 export const Hero: React.FC = () => {
@@ -60,16 +61,28 @@ export const Hero: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 text-center">
-                        <a 
-                            href="https://maps.app.goo.gl/JXnNYcPMBTB5coJBA" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="inline-flex items-center space-x-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105"
-                        >
-                            <LocationIcon className="w-6 h-6" />
-                            <span>Find Us</span>
-                        </a>
+                    <div className="mt-6 w-full">
+                        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                             <a 
+                                href="https://heyzine.com/flip-book/46058f4012.html" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="flex-1 inline-flex items-center justify-center space-x-2 bg-white/10 backdrop-blur-md border border-white/30 hover:bg-pink-600/80 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105"
+                            >
+                                <CocktailIcon className="w-5 h-5" />
+                                <span>Menu</span>
+                            </a>
+
+                            <a 
+                                href="https://maps.app.goo.gl/JXnNYcPMBTB5coJBA" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="flex-1 inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg shadow-purple-500/30"
+                            >
+                                <LocationIcon className="w-5 h-5" />
+                                <span>Find Us</span>
+                            </a>
+                        </div>
                          <div className="mt-4 flex items-center justify-center space-x-2 text-gray-300">
                             <ClockIcon className="w-5 h-5 text-purple-400" />
                             <p className="text-sm font-light tracking-wide">Thursday to Sunday · Until 3am</p>
