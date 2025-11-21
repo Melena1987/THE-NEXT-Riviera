@@ -21,6 +21,7 @@ export const About: React.FC = () => {
             description: 'An extensive menu of premium cocktails and drinks prepared by experts.',
             iconColorClass: 'text-pink-400',
             glowClass: 'cocktail-glow',
+            link: 'https://heyzine.com/flip-book/46058f4012.html'
         },
         {
             icon: UsersIcon,
@@ -52,17 +53,38 @@ export const About: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                {featuresData.map((feature, index) => (
-                    <AnimateOnScroll key={index} animation="zoom-in" delay={index * 150}>
-                        <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg text-center border border-white/10 feature-card transform transition-transform duration-300 hover:scale-105 h-full">
+                {featuresData.map((feature, index) => {
+                    const cardContent = (
+                        <>
                              <div className={`relative w-20 h-20 mx-auto mb-4 flex items-center justify-center rounded-full bg-black/20 ${feature.glowClass}`}>
                                 <feature.icon className={`w-10 h-10 ${feature.iconColorClass}`} />
                             </div>
                             <h3 className="text-xl font-bold mb-2 text-white font-bebas tracking-wider">{feature.title}</h3>
                             <p className="text-gray-400 text-sm">{feature.description}</p>
-                        </div>
-                    </AnimateOnScroll>
-                ))}
+                        </>
+                    );
+
+                    const className = "bg-white/5 backdrop-blur-sm p-6 rounded-lg text-center border border-white/10 feature-card transform transition-transform duration-300 hover:scale-105 h-full block w-full cursor-pointer";
+
+                    return (
+                        <AnimateOnScroll key={index} animation="zoom-in" delay={index * 150}>
+                            {feature.link ? (
+                                <a 
+                                    href={feature.link} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className={className}
+                                >
+                                    {cardContent}
+                                </a>
+                            ) : (
+                                <div className={className}>
+                                    {cardContent}
+                                </div>
+                            )}
+                        </AnimateOnScroll>
+                    );
+                })}
             </div>
         </ParallaxSection>
     );
