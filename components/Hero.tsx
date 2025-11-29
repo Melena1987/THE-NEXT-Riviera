@@ -19,7 +19,7 @@ export const Hero: React.FC = () => {
 
     return (
         <section 
-            className="h-screen min-h-[700px] bg-cover flex items-start lg:items-center justify-center relative text-white pt-8 lg:pt-0" 
+            className="h-screen min-h-[700px] bg-cover flex items-start lg:items-center justify-center relative text-white pt-8 lg:pt-0 bg-gradient-to-br from-purple-900 to-black" 
             style={{
                 backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762456508235_the_next.jpg?alt=media&token=a31ea93d-05f2-4e03-b8a5-41e9bbb1415b')",
                 backgroundPosition: `center calc(50% + ${offsetY * 0.5}px)`

@@ -9,7 +9,7 @@ interface ParallaxSectionProps {
 export const ParallaxSection: React.FC<ParallaxSectionProps> = ({ imageUrl, children, className }) => {
     return (
         <div
-            className={`relative py-20 md:py-32 parallax ${className || ''}`}
+            className={`relative py-20 md:py-32 parallax bg-gray-900 ${className || ''}`}
             style={{ backgroundImage: `url(${imageUrl})` }}
         >
             <div className="absolute inset-0 bg-black/60"></div>

@@ -1,30 +1,27 @@
-import { useState, useEffect, useRef, RefObject } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
-export const useOnScreen = (options: IntersectionObserverInit): [RefObject<HTMLDivElement | null>, boolean] => {
-    const ref = useRef<HTMLDivElement>(null);
+export const useOnScreen = (options: IntersectionObserverInit) => {
+    const [ref, setRef] = useState<Element | null>(null);
     const [isVisible, setIsVisible] = useState(false);
 
+    const memoizedOptions = useMemo(() => options, [JSON.stringify(options)]);
+
     useEffect(() => {
+        if (!ref) return;
+
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 setIsVisible(true);
-                if (ref.current) {
-                    observer.unobserve(ref.current);
-                }
+                observer.disconnect();
             }
-        }, options);
+        }, memoizedOptions);
 
-        if (ref.current) {
-            observer.observe(ref.current);
-        }
+        observer.observe(ref);
 
         return () => {
-            if (ref.current) {
-                // eslint-disable-next-line react-hooks/exhaustive-deps
-                observer.unobserve(ref.current);
-            }
+            observer.disconnect();
         };
-    }, [ref, options]);
+    }, [ref, memoizedOptions]);
 
-    return [ref, isVisible];
+    return [setRef, isVisible] as const;
 };

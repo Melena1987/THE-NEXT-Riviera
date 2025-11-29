@@ -71,6 +71,7 @@
             background-color: #050214;
             color: #fff;
             overflow-x: hidden;
+            min-height: 100vh;
         }
         .font-bebas { font-family: 'Bebas Neue', sans-serif; }
         .font-vibes { font-family: 'Great Vibes', cursive; }
@@ -164,6 +165,7 @@
 </head>
 <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <!-- Updated script src to relative path to ensure correct loading on subdirectories/Netlify -->
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>
